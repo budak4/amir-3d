@@ -1,0 +1,14 @@
+{
+  "name": "AMIR Voxel World",
+  "short_name": "AMIR 3D",
+  "description": "Interactive 8-bit Minecraft-style voxel world",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1a1a2e",
+  "theme_color": "#1a1a2e",
+  "icons": [
+    { "src": "icon.png", "sizes": "192x192", "type": "image/png", "purpose": "any" }
+  ]
+}

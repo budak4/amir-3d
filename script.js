@@ -1,8 +1,8 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
-
 const canvas = document.getElementById('scene');
-const PIXEL = 0.35;
+const PIXEL = isTouch() ? 0.28 : 0.35;
+function isTouch() {
+  return (('ontouchstart' in window) || (navigator.maxTouchPoints && navigator.maxTouchPoints > 0));
+}
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: false });
 renderer.setSize(Math.floor(innerWidth * PIXEL), Math.floor(innerHeight * PIXEL), false);
 canvas.style.width = '100vw';
@@ -219,7 +219,7 @@ buildPlayer();
 buildClouds();
 const [sunMesh, moonMesh] = makeSunMoon();
 
-const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.autoRotate = true;
@@ -262,6 +262,13 @@ document.getElementById('btnBlock').addEventListener('click', () => {
   blockIdx = (blockIdx + 1) % BLOCK_TYPES.length;
   document.getElementById('btnBlock').textContent = 'BLOK: ' + BLOCK_TYPES[blockIdx].name;
 });
+let mode = 'letak';
+const btnMode = document.getElementById('btnMode');
+btnMode.addEventListener('click', () => {
+  mode = mode === 'letak' ? 'buang' : 'letak';
+  btnMode.textContent = 'MODE: ' + mode.toUpperCase();
+  toast('MODE: ' + mode.toUpperCase());
+});
 window.addEventListener('keydown', e => {
   if (e.key === 'd' || e.key === 'D') document.getElementById('btnDay').click();
   if (e.key === ' ') { e.preventDefault(); controls.autoRotate = !controls.autoRotate; }
@@ -292,7 +299,8 @@ canvas.addEventListener('pointerup', e => {
   downPos = null;
   if (!hits.length) return;
   const h = hits[0];
-  if (e.button === 2) {
+  const remove = (e.button === 2) || (mode === 'buang' && e.button === 0);
+  if (remove) {
     const obj = h.object.userData.editable;
     if (obj) {
       obj.parent.remove(obj);
@@ -326,6 +334,10 @@ addEventListener('resize', () => {
   camera.aspect = innerWidth / innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(Math.floor(innerWidth * PIXEL), Math.floor(innerHeight * PIXEL), false);
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) requestAnimationFrame(animate);
 });
 
 function animate(t) {

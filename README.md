@@ -1,15 +1,16 @@
 # AMIR · Voxel World 8-Bit
 
-Interactive Minecraft-style 8-bit voxel world powered by Three.js.
+Interactive Minecraft-style 8-bit voxel world powered by Three.js. Mobile-ready (Safari/iOS, Android, tablet) dengan touch controls.
 
 ## Kawalan
-- **Drag** → orbit kamera
-- **Scroll** → zoom
-- **Klik kiri** → letak blok (tukar jenis blok guna butang `BLOK`)
-- **Klik kanan** → buang blok
-- **Butang `SIANG/MALAM`** atau kekunci **D** → tukar siang/malam
+- **Drag / gerak satu jari** → orbit kamera
+- **Scroll / pinch bergerak dua jari** → zoom
+- **Klik / ketuk (MODE: LETAK)** → letak blok
+- **Klik kanan / MODE: BUANG** → buang blok
+- **`SIANG/MALAM`** / **D** → tukar siang/malam
 - **`DUNIA BARU`** → jana semula terrain
-- **`AUTO-ROTATE`** atau **Spacebar** → auto-rotate on/off
+- **`AUTO-ROTATE`** / **Spacebar** → auto-rotate
+- **`BLOK`** → tukar jenis blok (7 jenis)
 
 ## Deploy ke GitHub Pages
 Repo ni hidup kat `budak4.github.io/amir-3d/` (branch `main`, root folder).
