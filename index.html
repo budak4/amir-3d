@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMIR · Voxel World 8-Bit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+</head>
+<body>
+<canvas id="scene"></canvas>
+<div class="scanlines"></div>
+
+<div class="hud">
+  <h1 class="title">AMIR</h1>
+  <p class="sub">VOXEL WORLD 8-BIT</p>
+  <div class="hint">
+    <span>drag = orbit</span><span>klik = letak blok</span><span>klik kanan = buang</span><span>D = siang/malam</span>
+  </div>
+</div>
+
+<div class="corner">
+  <span id="fps">0 fps</span>
+  <span id="tris">0 tris</span>
+</div>
+
+<div class="buttons">
+  <button id="btnDay">SIANG/MALAM</button>
+  <button id="btnWorld">DUNIA BARU</button>
+  <button id="btnRotate">AUTO-ROTATE</button>
+  <button class="block" id="btnBlock">BLOK: RUMPUT</button>
+</div>
+
+<div id="msg" class="msg"></div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
